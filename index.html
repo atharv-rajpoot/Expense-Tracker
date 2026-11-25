@@ -1,0 +1,595 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Expense Tracker</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">◈</div>
+
+                <div class="brand-name">
+                    Student<br>
+                    Expense Tracker
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+
+                <button class="nav-item active" data-page="Dashboard">
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </button>
+
+                <button class="nav-item" data-page="Transactions">
+                    <span class="nav-icon">⇄</span>
+                    Transactions
+                </button>
+
+                <button class="nav-item" data-page="Categories">
+                    <span class="nav-icon">◇</span>
+                    Categories
+                </button>
+
+                <button class="nav-item" data-page="Reports">
+                    <span class="nav-icon">▥</span>
+                    Reports
+                </button>
+
+                <button class="nav-item" data-page="Settings">
+                    <span class="nav-icon">⚙</span>
+                    Settings
+                </button>
+
+            </nav>
+
+            <div class="sidebar-footer">
+
+                <div class="graduation-icon">♧</div>
+
+                <p>
+                    Manage your money<br>
+                    Track your spending<br>
+                    Build better habits
+                </p>
+
+            </div>
+
+            <div class="sidebar-art"></div>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <header class="page-header">
+
+                <button class="mobile-menu" id="mobileMenu">
+                    ☰
+                </button>
+
+                <div class="heading">
+
+                    <h1>Student Expense Tracker</h1>
+
+                    <p>
+                        Track income, expenses, investments and savings in one place
+                    </p>
+
+                </div>
+
+                <div class="date-controls">
+
+                    <label class="select-control">
+
+                        <span>▣</span>
+                        <span>Year:</span>
+
+                        <select id="yearSelect" aria-label="Select year">
+                        </select>
+
+                        <span class="chevron">⌄</span>
+
+                    </label>
+
+
+                    <label class="select-control">
+
+                        <span>▣</span>
+                        <span>Month:</span>
+
+                        <select id="monthSelect" aria-label="Select month">
+                        </select>
+
+                        <span class="chevron">⌄</span>
+
+                    </label>
+
+
+                    <button class="all-year-btn" id="allYearBtn">
+                        ▣ &nbsp; All Year
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- ================= SUMMARY CARDS ================= -->
+            <section class="summary-grid" id="summaryCards">
+
+                <!-- Income -->
+                <article class="summary-card income-card">
+
+                    <div class="card-top">
+                        <span class="card-icon">↑</span>
+                        <span class="card-label">Total Income</span>
+                    </div>
+
+                    <strong id="totalIncome">₹ 12,500</strong>
+
+                    <div class="wave"></div>
+
+                </article>
+
+
+                <!-- Expense -->
+                <article class="summary-card expense-card">
+
+                    <div class="card-top">
+                        <span class="card-icon">↓</span>
+                        <span class="card-label">Total Expense</span>
+                    </div>
+
+                    <strong id="totalExpense">₹ 7,340</strong>
+
+                    <div class="wave"></div>
+
+                </article>
+
+
+                <!-- Cashback -->
+                <article class="summary-card cashback-card">
+
+                    <div class="card-top">
+                        <span class="card-icon">▱</span>
+                        <span class="card-label">Cashback</span>
+                    </div>
+
+                    <strong id="cashback">₹ 320</strong>
+
+                    <div class="wave"></div>
+
+                </article>
+
+
+                <!-- Balance -->
+                <article class="summary-card balance-card">
+
+                    <div class="card-top">
+                        <span class="card-icon">▣</span>
+                        <span class="card-label">Remaining Balance</span>
+                    </div>
+
+                    <strong id="balance">₹ 5,160</strong>
+
+                    <div class="wave"></div>
+
+                </article>
+
+
+                <!-- Daily Average -->
+                <article class="summary-card daily-card">
+
+                    <div class="card-top">
+                        <span class="card-icon">↗</span>
+                        <span class="card-label">Daily Avg. Spending</span>
+                    </div>
+
+                    <strong id="dailyAverage">₹ 245</strong>
+
+                    <div class="wave"></div>
+
+                </article>
+
+
+                <!-- Savings -->
+                <article class="summary-card savings-card">
+
+                    <div class="card-top">
+                        <span class="card-icon">♧</span>
+                        <span class="card-label">Savings</span>
+                    </div>
+
+                    <strong id="savings">₹ 5,160</strong>
+
+                    <div class="wave"></div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ================= ANALYTICS ================= -->
+            <section class="analytics-grid">
+
+
+                <!-- EXPENSE CATEGORY -->
+                <article class="panel category-panel">
+
+                    <div class="panel-title">
+
+                        <h2>Expense by Category</h2>
+
+                        <button class="info-button" title="Category breakdown">
+                            i
+                        </button>
+
+                    </div>
+
+
+                    <div class="category-content">
+
+                        <div class="donut-wrap">
+
+                            <canvas id="categoryChart"></canvas>
+
+                            <div class="donut-center">
+
+                                <strong id="donutTotal">₹ 7,340</strong>
+
+                                <span>Total Expense</span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="category-legend" id="categoryLegend">
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- SPENDING INSIGHTS -->
+                <article class="panel insights-panel">
+
+                    <div class="panel-title">
+                        <h2>Spending Insights</h2>
+                    </div>
+
+
+                    <!-- Highest Spending Category -->
+                    <div class="insight-box purple-insight">
+
+                        <div class="insight-icon">🏆</div>
+
+                        <div>
+
+                            <span>Highest Spending Category</span>
+
+                            <strong id="highestCategory">
+                                Food (₹ 2,200)
+                            </strong>
+
+                            <small id="highestPercent">
+                                30.0% of total expense
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Transaction Count -->
+                    <div class="insight-box blue-insight">
+
+                        <div class="insight-icon">▦</div>
+
+                        <div>
+
+                            <span>Total Transactions</span>
+
+                            <strong id="transactionCount">
+                                28
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- INCOME VS EXPENSE -->
+                <article class="panel comparison-panel">
+
+                    <div class="panel-title">
+
+                        <h2>Income vs Expense</h2>
+
+                        <button class="info-button" title="Income and expenses">
+                            i
+                        </button>
+
+                    </div>
+
+
+                    <div class="comparison-legend">
+
+                        <span>
+                            <i class="legend-dot income-dot"></i>
+                            Income
+                        </span>
+
+                        <span>
+                            <i class="legend-dot expense-dot"></i>
+                            Expense
+                        </span>
+
+                    </div>
+
+
+                    <div class="comparison-chart-wrap">
+
+                        <canvas id="incomeExpenseChart"></canvas>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ================= RECENT TRANSACTIONS ================= -->
+            <section class="panel transactions-panel">
+
+                <div class="transactions-heading">
+
+                    <h2>Recent Transactions</h2>
+
+                    <button class="add-transaction-btn" id="addTransactionBtn">
+
+                        <span>＋</span>
+
+                        Add Transaction
+
+                    </button>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Payment Mode</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="transactionRows">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- EMPTY STATE -->
+                <div class="empty-state hidden" id="emptyState">
+
+                    <div class="empty-icon">▤</div>
+
+                    <h3>No transactions yet</h3>
+
+                    <p>
+                        Add your first transaction to start tracking your finances.
+                    </p>
+
+                    <button class="add-transaction-btn" id="emptyAddBtn">
+                        ＋ Add Transaction
+                    </button>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= ADD TRANSACTION MODAL ================= -->
+    <div class="modal-backdrop hidden" id="transactionModal">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <h2>Add Transaction</h2>
+
+                <button class="modal-close" id="closeModal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="transactionForm">
+
+
+                <!-- Transaction Type -->
+                <div class="type-toggle">
+
+                    <button type="button" class="selected" data-type="expense">
+                        Expense
+                    </button>
+
+                    <button type="button" data-type="income">
+                        Income
+                    </button>
+
+                </div>
+
+
+                <input
+                    type="hidden"
+                    id="transactionType"
+                    value="expense"
+                >
+
+
+                <!-- Amount -->
+                <label>
+
+                    Amount (₹)
+
+                    <input
+                        type="number"
+                        id="amountInput"
+                        min="1"
+                        step="1"
+                        required
+                        placeholder="0"
+                    >
+
+                </label>
+
+
+                <!-- Category and Date -->
+                <div class="form-row">
+
+                    <label>
+
+                        Category
+
+                        <select id="categoryInput" required>
+                        </select>
+
+                    </label>
+
+
+                    <label>
+
+                        Date
+
+                        <input
+                            type="date"
+                            id="dateInput"
+                            required
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <!-- Description -->
+                <label>
+
+                    Description
+
+                    <input
+                        type="text"
+                        id="descriptionInput"
+                        placeholder="e.g. Lunch at college"
+                        required
+                    >
+
+                </label>
+
+
+                <!-- Payment Method -->
+                <label>
+
+                    Payment Method
+
+                    <select id="paymentInput">
+
+                        <option>UPI</option>
+                        <option>Cash</option>
+                        <option>Debit Card</option>
+                        <option>Credit Card</option>
+                        <option>Bank Transfer</option>
+
+                    </select>
+
+                </label>
+
+
+                <!-- Buttons -->
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="secondary-btn"
+                        id="cancelModal"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="add-transaction-btn"
+                    >
+                        Save Transaction
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="js/app.js"></script>
+
+</body>
+</html>
