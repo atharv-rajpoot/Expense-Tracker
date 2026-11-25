@@ -1,0 +1,1387 @@
+
+/* =========================
+   GLOBAL RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --sidebar: #171923;
+    --purple: #6d35db;
+    --ink: #101323;
+    --muted: #69718b;
+    --line: #e1e5f4;
+    --surface: #ffffff;
+    --bg: #f6f7ff;
+}
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+}
+
+button,
+select,
+input {
+    font: inherit;
+}
+
+
+/* =========================
+   APP LAYOUT
+========================= */
+
+.app-shell {
+    min-height: 100vh;
+    display: flex;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 262px;
+    min-width: 262px;
+
+    background: var(--sidebar);
+    color: #f8f8ff;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 30px 16px 24px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* BRAND */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 0 12px 45px;
+}
+
+.brand-icon {
+    font-size: 44px;
+    color: #a97aff;
+    line-height: 1;
+}
+
+.brand-name {
+    font-weight: 750;
+    font-size: 19px;
+    line-height: 1.2;
+}
+
+
+/* NAVIGATION */
+
+.nav-menu {
+    display: grid;
+    gap: 10px;
+    z-index: 1;
+}
+
+.nav-item {
+    border: none;
+    background: transparent;
+    color: #f3f3fa;
+
+    text-align: left;
+
+    padding: 14px 18px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    font-weight: 600;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.nav-item:hover {
+    background: #292b3b;
+}
+
+.nav-item.active {
+    background: linear-gradient(
+        115deg,
+        #773bd4,
+        #5265e6
+    );
+
+    box-shadow: 0 5px 16px #6543c744;
+}
+
+.nav-icon {
+    width: 28px;
+    font-size: 25px;
+    text-align: center;
+}
+
+
+/* SIDEBAR FOOTER */
+
+.sidebar-footer {
+    border-top: 1px solid #596078;
+
+    margin: 38px 12px 0;
+    padding: 42px 15px 0;
+
+    color: #c4c8db;
+    line-height: 1.7;
+
+    z-index: 1;
+}
+
+.graduation-icon {
+    font-size: 40px;
+    color: #a876ff;
+    margin-bottom: 12px;
+}
+
+
+/* SIDEBAR DECORATION */
+
+.sidebar-art {
+    position: absolute;
+
+    bottom: -120px;
+    left: -130px;
+
+    width: 520px;
+    height: 300px;
+
+    background:
+        radial-gradient(
+            ellipse at 75% 55%,
+            #7032db 0 28%,
+            transparent 29%
+        ),
+        radial-gradient(
+            ellipse at 38% 70%,
+            #5131bb 0 30%,
+            transparent 31%
+        );
+
+    opacity: 0.6;
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+    padding: 20px 22px 28px;
+
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 22px;
+
+    margin-bottom: 24px;
+}
+
+.heading {
+    border-left: 5px solid #9563ff;
+    padding-left: 17px;
+}
+
+.heading h1 {
+    font-size: 34px;
+    letter-spacing: -1.2px;
+
+    margin-bottom: 4px;
+
+    font-weight: 800;
+}
+
+.heading p {
+    margin: 0;
+
+    font-size: 17px;
+    color: #303856;
+}
+
+
+/* DATE CONTROLS */
+
+.date-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.select-control {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    border: 1px solid #cfd5ec;
+    background: white;
+
+    padding: 12px 13px;
+
+    border-radius: 13px;
+
+    box-shadow: 0 2px 5px #18224b0a;
+
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.select-control select {
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: var(--ink);
+    font-weight: 600;
+
+    cursor: pointer;
+    max-width: 100px;
+}
+
+.chevron {
+    color: #46506c;
+}
+
+.all-year-btn {
+    border: none;
+
+    background: #151724;
+    color: white;
+
+    padding: 14px 19px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.all-year-btn:hover {
+    background: #292b3b;
+}
+
+.all-year-btn.active {
+    background: linear-gradient(
+        115deg,
+        #773bd4,
+        #5265e6
+    );
+}
+
+
+/* =========================
+   SUMMARY CARDS
+========================= */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+
+    gap: 13px;
+
+    margin-bottom: 20px;
+}
+
+.summary-card {
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    padding: 17px 16px 18px;
+
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+
+    min-height: 110px;
+}
+
+
+/* CARD COLORS */
+
+.income-card {
+    --card-bg: #f1fffb;
+    --card-border: #b8f2df;
+    --accent: #00a96b;
+    --tint: #a8f3d9;
+}
+
+.expense-card {
+    --card-bg: #fff5f8;
+    --card-border: #ffd7e3;
+    --accent: #ef4762;
+    --tint: #ffd0df;
+}
+
+.cashback-card {
+    --card-bg: #f3f8ff;
+    --card-border: #d3e5ff;
+    --accent: #1680ff;
+    --tint: #c9e2ff;
+}
+
+.balance-card {
+    --card-bg: #faf5ff;
+    --card-border: #e7d8ff;
+    --accent: #733be1;
+    --tint: #e1caff;
+}
+
+.daily-card {
+    --card-bg: #fffaf0;
+    --card-border: #f8e7be;
+    --accent: #d79717;
+    --tint: #ffedbd;
+}
+
+.savings-card {
+    --card-bg: #f0fffc;
+    --card-border: #c3f3e8;
+    --accent: #009d78;
+    --tint: #baf5e5;
+}
+
+
+/* CARD CONTENT */
+
+.card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    position: relative;
+    z-index: 1;
+}
+
+.card-icon {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--tint);
+    color: var(--accent);
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.card-label {
+    font-size: 13px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.summary-card strong {
+    display: block;
+
+    font-size: 26px;
+    font-weight: 800;
+
+    margin: 7px 0 0 48px;
+
+    position: relative;
+    z-index: 1;
+
+    white-space: nowrap;
+}
+
+
+/* CARD DECORATION */
+
+.wave {
+    position: absolute;
+
+    bottom: -18px;
+    right: -5px;
+
+    width: 110px;
+    height: 48px;
+
+    background: var(--tint);
+    opacity: 0.55;
+
+    border-radius: 50% 45% 0 0;
+
+    transform: rotate(-8deg);
+}
+
+
+/* =========================
+   ANALYTICS LAYOUT
+========================= */
+
+.analytics-grid {
+    display: grid;
+
+    grid-template-columns: 1.65fr 1fr 1.08fr;
+
+    gap: 13px;
+
+    margin-bottom: 18px;
+}
+
+.panel {
+    background: var(--surface);
+
+    border: 1px solid var(--line);
+    border-radius: 16px;
+
+    box-shadow: 0 3px 10px #2d37620a;
+
+    min-width: 0;
+}
+
+
+/* ANALYTICS PANELS */
+
+.category-panel,
+.insights-panel,
+.comparison-panel {
+    padding: 18px 20px;
+    min-height: 320px;
+}
+
+
+/* PANEL TITLE */
+
+.panel-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+.panel-title h2,
+.transactions-heading h2 {
+    font-size: 20px;
+    letter-spacing: -0.4px;
+
+    margin: 0;
+
+    font-weight: 750;
+}
+
+.info-button {
+    border: 2px solid #7580a3;
+
+    border-radius: 50%;
+
+    width: 20px;
+    height: 20px;
+
+    line-height: 15px;
+
+    background: white;
+    color: #65708e;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: help;
+}
+
+
+/* =========================
+   CATEGORY CHART
+========================= */
+
+.category-content {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    min-height: 245px;
+}
+
+.donut-wrap {
+    width: 48%;
+    min-width: 170px;
+    max-width: 260px;
+
+    aspect-ratio: 1;
+
+    position: relative;
+}
+
+.donut-wrap canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.donut-center {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: none;
+}
+
+.donut-center strong {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.donut-center span {
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+
+/* CATEGORY LEGEND */
+
+.category-legend {
+    display: grid;
+    gap: 10px;
+
+    flex: 1;
+    min-width: 0;
+}
+
+.legend-row {
+    display: grid;
+
+    grid-template-columns:
+        10px
+        minmax(60px, 1fr)
+        auto
+        auto;
+
+    gap: 9px;
+
+    align-items: center;
+
+    font-size: 13px;
+}
+
+.legend-swatch {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+}
+
+.legend-name {
+    white-space: nowrap;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.legend-value {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.legend-percent {
+    color: #455073;
+
+    min-width: 39px;
+    text-align: right;
+}
+
+
+/* =========================
+   SPENDING INSIGHTS
+========================= */
+
+.insights-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.insight-box {
+    border-radius: 14px;
+
+    padding: 18px 15px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    flex: 1;
+}
+
+.purple-insight {
+    background: #f1eaff;
+    margin-bottom: 12px;
+}
+
+.blue-insight {
+    background: #eaf3ff;
+}
+
+.insight-icon {
+    font-size: 31px;
+    line-height: 1.1;
+}
+
+.insight-box span {
+    display: block;
+
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.insight-box strong {
+    display: block;
+
+    font-size: 19px;
+    font-weight: 800;
+
+    margin-bottom: 6px;
+}
+
+.insight-box small {
+    color: #4e5a7d;
+    font-size: 13px;
+}
+
+
+/* =========================
+   INCOME VS EXPENSE CHART
+========================= */
+
+.comparison-panel {
+    position: relative;
+}
+
+.comparison-legend {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 17px;
+
+    font-size: 12px;
+
+    margin-bottom: 5px;
+}
+
+.comparison-legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 3px;
+}
+
+.income-dot {
+    background: #6b35d9;
+}
+
+.expense-dot {
+    background: #71b5fa;
+}
+
+.comparison-chart-wrap {
+    height: 230px;
+}
+
+
+/* =========================
+   TRANSACTIONS
+========================= */
+
+.transactions-panel {
+    padding: 17px 19px 12px;
+}
+
+.transactions-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 13px;
+}
+
+
+/* ADD BUTTON */
+
+.add-transaction-btn {
+    background: linear-gradient(
+        115deg,
+        #7136d8,
+        #5c50df
+    );
+
+    border: none;
+
+    border-radius: 11px;
+
+    padding: 11px 17px;
+
+    color: white;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    box-shadow: 0 3px 8px #6540ce2b;
+
+    transition: 0.2s;
+}
+
+.add-transaction-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px #6540ce40;
+}
+
+.add-transaction-btn span {
+    font-size: 20px;
+}
+
+
+/* TABLE */
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 780px;
+}
+
+thead {
+    background: #f0effb;
+}
+
+th,
+td {
+    text-align: left;
+
+    padding: 10px 12px;
+
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+th {
+    font-weight: 750;
+}
+
+tbody tr:nth-child(even) {
+    background: #f7f7fc;
+}
+
+tbody tr:hover {
+    background: #efeffa;
+}
+
+
+/* TRANSACTION TYPE BADGES */
+
+.type-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    border-radius: 20px;
+
+    padding: 4px 10px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.type-pill.income {
+    background: #d9f8e3;
+    color: #137c3c;
+}
+
+.type-pill.expense {
+    background: #ffe0e5;
+    color: #c22d43;
+}
+
+
+/* AMOUNT COLORS */
+
+.amount.income {
+    color: #16803b;
+    font-weight: 750;
+}
+
+.amount.expense {
+    color: #d62929;
+    font-weight: 750;
+}
+
+
+/* ACTION BUTTONS */
+
+.action-btn {
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 17px;
+    padding: 4px 7px;
+
+    color: #15182a;
+}
+
+.action-btn:hover {
+    color: var(--purple);
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state {
+    text-align: center;
+
+    padding: 38px 20px;
+
+    color: #68708b;
+}
+
+.empty-icon {
+    font-size: 38px;
+}
+
+.empty-state h3 {
+    margin: 8px 0;
+    color: #1c2239;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   TRANSACTION MODAL
+========================= */
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+
+    background: #101323a8;
+
+    display: grid;
+    place-items: center;
+
+    padding: 18px;
+
+    z-index: 10;
+}
+
+.modal {
+    width: min(100%, 480px);
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    color: #171a2b;
+
+    box-shadow: 0 20px 60px #0003;
+}
+
+
+/* MODAL HEADER */
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.modal-close {
+    border: none;
+
+    background: #f0f1f6;
+
+    border-radius: 50%;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+/* MODAL FORM */
+
+.modal form {
+    display: grid;
+    gap: 13px;
+}
+
+.modal label {
+    display: grid;
+    gap: 6px;
+
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.modal input,
+.modal select {
+    width: 100%;
+
+    border: 1px solid #d9ddeb;
+
+    border-radius: 9px;
+
+    padding: 11px;
+
+    background: white;
+    color: #171a2b;
+
+    outline: none;
+}
+
+.modal input:focus,
+.modal select:focus {
+    border-color: #7c50e5;
+    box-shadow: 0 0 0 3px #7c50e51a;
+}
+
+
+/* INCOME / EXPENSE TOGGLE */
+
+.type-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    background: #f1f2f8;
+
+    padding: 4px;
+
+    border-radius: 10px;
+}
+
+.type-toggle button {
+    border: none;
+
+    padding: 9px;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.type-toggle button.selected {
+    background: white;
+
+    box-shadow: 0 2px 5px #0001;
+}
+
+
+/* FORM ROW */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* MODAL ACTIONS */
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 6px;
+}
+
+.secondary-btn {
+    border: 1px solid #d8ddec;
+
+    background: white;
+
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+}
+
+.secondary-btn:hover {
+    background: #f5f6fb;
+}
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.mobile-menu {
+    display: none;
+}
+
+
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+
+@media (max-width: 1350px) {
+
+    .summary-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .analytics-grid {
+        grid-template-columns: 1.3fr 1fr;
+    }
+
+    .comparison-panel {
+        grid-column: span 2;
+    }
+
+    .category-panel {
+        min-height: 330px;
+    }
+
+}
+
+
+/* =========================
+   SMALL LAPTOPS
+========================= */
+
+@media (max-width: 1050px) {
+
+    .sidebar {
+        width: 220px;
+        min-width: 220px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .date-controls {
+        flex-wrap: wrap;
+    }
+
+    .analytics-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .category-panel {
+        grid-column: span 2;
+    }
+
+    .comparison-panel {
+        grid-column: auto;
+    }
+
+    .category-content {
+        justify-content: center;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 760px) {
+
+    .app-shell {
+        display: block;
+    }
+
+    /* MOBILE SIDEBAR */
+
+    .sidebar {
+        position: fixed;
+
+        z-index: 8;
+
+        left: -270px;
+        top: 0;
+        bottom: 0;
+
+        width: 250px;
+
+        transition: left 0.2s ease;
+    }
+
+    .sidebar.open {
+        left: 0;
+    }
+
+
+    /* MAIN CONTENT */
+
+    .main-content {
+        padding: 15px;
+    }
+
+
+    /* HEADER */
+
+    .page-header {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .mobile-menu {
+        display: block;
+
+        border: 1px solid var(--line);
+
+        background: white;
+
+        border-radius: 9px;
+
+        padding: 9px 11px;
+
+        cursor: pointer;
+    }
+
+    .heading {
+        flex: 1;
+    }
+
+    .heading h1 {
+        font-size: 23px;
+    }
+
+    .heading p {
+        font-size: 12px;
+    }
+
+
+    /* DATE CONTROLS */
+
+    .date-controls {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .select-control {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .select-control select {
+        max-width: 80px;
+    }
+
+    .all-year-btn {
+        grid-column: span 2;
+    }
+
+
+    /* SUMMARY CARDS */
+
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+    .summary-card {
+        padding: 13px;
+        min-height: 100px;
+    }
+
+    .card-icon {
+        width: 32px;
+        height: 32px;
+
+        font-size: 21px;
+    }
+
+    .card-label {
+        font-size: 11px;
+    }
+
+    .summary-card strong {
+        font-size: 21px;
+        margin-left: 0;
+    }
+
+
+    /* ANALYTICS */
+
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-panel,
+    .comparison-panel {
+        grid-column: auto;
+    }
+
+    .category-content {
+        gap: 10px;
+    }
+
+    .donut-wrap {
+        min-width: 145px;
+        width: 46%;
+    }
+
+    .category-legend {
+        gap: 8px;
+    }
+
+    .legend-row {
+        font-size: 11px;
+        gap: 5px;
+    }
+
+    .category-panel,
+    .insights-panel,
+    .comparison-panel {
+        padding: 15px;
+        min-height: unset;
+    }
+
+    .comparison-chart-wrap {
+        height: 220px;
+    }
+
+
+    /* TRANSACTIONS */
+
+    .transactions-heading h2 {
+        font-size: 17px;
+    }
+
+    .add-transaction-btn {
+        font-size: 12px;
+        padding: 10px 11px;
+    }
+
+    .transactions-panel {
+        padding: 13px;
+    }
+
+    .table-wrap {
+        margin: 0 -5px;
+    }
+
+
+    /* MODAL */
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================
+   VERY SMALL MOBILE
+========================= */
+
+@media (max-width: 390px) {
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-content {
+        flex-direction: column;
+    }
+
+    .donut-wrap {
+        width: 190px;
+    }
+
+    .category-legend {
+        width: 100%;
+    }
+
+}
